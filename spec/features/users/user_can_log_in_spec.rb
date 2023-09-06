@@ -18,12 +18,6 @@ RSpec.describe "Logging In" do
 
     expect(page).to have_content("Welcome, #{user.username}")
   end
-#   As a registered user
-# When I visit the landing page `/`
-# And click on the link to go to my dashboard
-# And fail to fill in my correct credentials
-# I'm taken back to the Log In page
-# And I can see a flash message telling me that I entered incorrect credentials.
 
   it "can't log in with invalid credentials" do
     user = User.create(username: "funbucket13", email: "funbucket123@gmail.com", password: "test", password_confirmation: "test")
@@ -37,7 +31,7 @@ RSpec.describe "Logging In" do
     fill_in :password, with: "LameAttempt"
 
     click_on "Log In"
-   
+
 
     expect(current_path).to eq('/login')
     expect(page).to have_content("Sorry, your credentials are bad.")
